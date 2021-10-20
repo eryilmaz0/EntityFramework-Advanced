@@ -107,11 +107,6 @@ namespace EfCoreAdvanced.Repositories
                 query = query.Where(filter);
             }
 
-            if(filter != null)
-            {
-                query = query.Where(filter);
-            }
-
 
             int skip = 0;
             int take = 100;
@@ -144,7 +139,7 @@ namespace EfCoreAdvanced.Repositories
 
         public void Remove(int entityId)
         {
-            TEntity entity = this.Get(x => x.Id == entityId);
+            TEntity entity = this.Get(filter : x => x.Id == entityId);
             this.Remove(entity);
         }
 
